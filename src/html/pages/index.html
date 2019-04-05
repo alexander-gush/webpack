@@ -1,0 +1,15 @@
+<% var data = {
+  title: "Заголовок | Проект",
+}; %>
+<%= _.template(require('./../includes/header.html').default)(data) %>
+
+<div class="container container2">Первая страница.</div>
+<div style="width: auto; height: 300px;" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+</div>
+
+<%= _.template(require('./../includes/footer.html').default)(data) %>
