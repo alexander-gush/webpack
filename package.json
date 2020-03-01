@@ -10,6 +10,7 @@
     "build": "webpack --mode production && prettier --print-width=120 --parser html --write dist/*.html"
   },
   "dependencies": {
+    "locomotive-scroll": "^3.3.9",
     "swiper": "^4.5.0"
   },
   "devDependencies": {

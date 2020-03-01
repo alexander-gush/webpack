@@ -5,3 +5,18 @@ body {
 .container2 {
   background: url('./../img/logo.svg');
 }
+
+#earth_div {
+  background: url('./../img/stars.jpg');
+  background-size: cover;
+  transition: background-color .2s ease;
+  span {
+    color: transparent;
+  }
+  &.test {
+    background: lemonchiffon;
+  }
+  &.test2 {
+    background: forestgreen;
+  }
+}

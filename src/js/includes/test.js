@@ -1,10 +1,16 @@
 import Swiper from 'swiper';
 
-export default function () {
 
+function MakeSmth() {
     const container = document.querySelector('.swiper-container');
     console.log(container);
     const mySwiper = new Swiper(container, {});
-    const test = () => console.log(1);
-    test();
 }
+
+function MakeSmth2() {
+    const container = document.querySelector('.swiper-container');
+    console.log(container);
+    const mySwiper = new Swiper(container, {});
+}
+
+export {MakeSmth, MakeSmth2};

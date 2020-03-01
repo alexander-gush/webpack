@@ -1,14 +1,38 @@
 <% var data = {
-  title: "Заголовок | Проект",
+title: "Второй заголовок | Проект",
+author: "Harrix"
 }; %>
 <%= _.template(require('./../includes/header.html').default)(data) %>
 
-<div class="container container2">Первая страница.</div>
-<div style="width: auto; height: 300px;" class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">Slide 1</div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
+
+<div data-scroll-container>
+  <div class="earth-container">
+    <div id="earth_div"></div>
+  </div>
+  <div data-scroll-section>
+    <h1 data-scroll data-scroll-call="test0">Hey</h1>
+    <div class="test"></div>
+    <p data-scroll>👋</p>
+  </div>
+  <div data-scroll-section>
+    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test">What's up?1</h2>
+    <div class="test"></div>
+    <p data-scroll data-scroll-speed="2">😬</p>
+  </div>
+  <div data-scroll-section >
+    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test2">What's up?2</h2>
+    <div class="test"></div>
+    <p data-scroll data-scroll-speed="2">😬</p>
+  </div>
+  <div data-scroll-section >
+    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test3">What's up?3</h2>
+    <div class="test"></div>
+    <p data-scroll data-scroll-speed="2">😬</p>
+  </div>
+  <div data-scroll-section >
+    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test4">What's up?</h2>
+    <div class="test"></div>
+    <p data-scroll data-scroll-speed="2">😬</p>
   </div>
 </div>
 

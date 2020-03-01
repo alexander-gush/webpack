@@ -1,5 +1,23 @@
 @import "~swiper/dist/css/swiper";
+@import "~locomotive-scroll/dist/locomotive-scroll.css";
 @import "./import/variables";
 @import "./import/header";
 
+body {
+  margin: 0;
+}
+.test {
+  height: 100vh;
+  background: transparent;
+}
 
+#earth_div{
+  width: 100%;
+  height: 100vh;
+  //z-index: 121;
+  position: fixed;
+}
+.earth-container {
+  width: 100%;
+  height: 100vh;
+}
