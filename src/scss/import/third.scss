@@ -1,0 +1,17 @@
+.third-scene {
+  height: 150vh;
+  position: relative;
+  color: black;
+  h1 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .text {
+    width: 700px;
+    margin: 0 auto;
+
+  }
+  &.active {
+
+  }
+}

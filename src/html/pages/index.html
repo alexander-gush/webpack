@@ -1,38 +1,53 @@
 <% var data = {
-title: "Второй заголовок | Проект",
-author: "Harrix"
+title: "C 8 марта",
 }; %>
 <%= _.template(require('./../includes/header.html').default)(data) %>
 
-
-<div data-scroll-container>
+<div id="js-scroll">
   <div class="earth-container">
-    <div id="earth_div"></div>
+    <div id="earth" class="initial"></div>
   </div>
   <div data-scroll-section>
-    <h1 data-scroll data-scroll-call="test0">Hey</h1>
-    <div class="test"></div>
-    <p data-scroll>👋</p>
+    <div class="first-scene" data-scroll data-scroll-call="first">
+      <div class="first-scene__content">
+        <h1 data-scroll data-scroll-speed="-1" >GRAND AFISHA</h1>
+        <div class="arrow">↓</div>
+      </div>
+    </div>
   </div>
   <div data-scroll-section>
-    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test">What's up?1</h2>
-    <div class="test"></div>
-    <p data-scroll data-scroll-speed="2">😬</p>
+    <div class="second-scene" data-scroll data-scroll-call="second">
+      <div class="empty-block-50vh"></div>
+      <h1 data-scroll data-scroll-speed="1" >ASIA FOOD</h1>
+      <div class="text" data-scroll-speed="-2">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Aliquam sed interdum augue,
+        at facilisis risus.
+      </div>
+    </div>
   </div>
-  <div data-scroll-section >
-    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test2">What's up?2</h2>
-    <div class="test"></div>
-    <p data-scroll data-scroll-speed="2">😬</p>
+  <div data-scroll-section>
+    <div class="third-scene" data-scroll data-scroll-call="third">
+      <h1 data-scroll data-scroll-speed="1" >EUROPEAN FOOD</h1>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Aliquam sed interdum augue,
+        at facilisis risus.
+      </div>
+    </div>
   </div>
-  <div data-scroll-section >
-    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test3">What's up?3</h2>
-    <div class="test"></div>
-    <p data-scroll data-scroll-speed="2">😬</p>
+  <div data-scroll-section>
+    <div class="fourth-scene" data-scroll data-scroll-call="fourth">
+      <h1 data-scroll data-scroll-speed="1" >SPECIAL GUEST</h1>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Aliquam sed interdum augue,
+        at facilisis risus.
+      </div>
+    </div>
   </div>
-  <div data-scroll-section >
-    <h2 data-scroll data-scroll-speed="1" data-scroll-call="test4">What's up?</h2>
-    <div class="test"></div>
-    <p data-scroll data-scroll-speed="2">😬</p>
+  <div data-scroll-section>
+    <div class="fifth-scene" data-scroll data-scroll-call="fifth"></div>
   </div>
 </div>
 

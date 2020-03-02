@@ -1,23 +1,39 @@
 @import "~swiper/dist/css/swiper";
 @import "~locomotive-scroll/dist/locomotive-scroll.css";
 @import "./import/variables";
-@import "./import/header";
+@import "./import/fonts";
+@import "./import/earth";
+@import "./import/first";
+@import "./import/second";
+@import "./import/third";
+@import "./import/fourth";
+@import "./import/fifth";
 
 body {
   margin: 0;
+  font-family: 'Montserrat';
+  background: black;
 }
+
+h1 {
+  font-family: 'DrukTextWide';
+}
+
+.empty-block-50vh {
+  height: 30vh;
+}
+
+
 .test {
   height: 100vh;
   background: transparent;
 }
 
-#earth_div{
-  width: 100%;
-  height: 100vh;
-  //z-index: 121;
-  position: fixed;
+body {
+  font-size: 40px;
+  color: $d-green;
 }
-.earth-container {
-  width: 100%;
-  height: 100vh;
+.container2 {
+  background: url('./../img/logo.svg');
 }
+

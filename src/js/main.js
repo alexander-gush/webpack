@@ -1,12 +1,23 @@
-import {MakeSmth, MakeSmth2} from './includes/test';
-var map = ''
+import LocomotiveScroll from 'locomotive-scroll';
 
-const block = document.querySelector('#earth_div');
+let map = '';
 
-var myReq;
+const $earth = document.getElementById('earth');
 
-function initialize() {
-  var options = {
+let scrollingUp = false;
+let scrollingDown = false;
+
+function handleMouseWheel (e) {
+  scrollingUp = e.deltaY < 0;
+  scrollingDown = e.deltaY > 0;
+}
+
+window.addEventListener('mousewheel', handleMouseWheel, {passive: false});
+
+
+
+function initMap() {
+  const options = {
     center: [10, -20],
     zoom: 2,
     dragging: false,
@@ -15,103 +26,141 @@ function initialize() {
     zooming: false,
     // sky: true,
   };
-  map  = new WE.map('earth_div', options);
-  var baselayer = WE.tileLayer('https://webglearth.github.io/webglearth2-offline/{z}/{x}/{y}.jpg', {
-    // tileSize: 256,
-    // bounds: [[-85, -180], [85, 180]],
-    // minZoom: 0,
-    // maxZoom: 16,
-    // attribution: 'WebGLEarth example',
+  map  = new WE.map('earth', options);
+  WE.tileLayer('https://webglearth.github.io/webglearth2-offline/{z}/{x}/{y}.jpg', {
     tms: true
   }).addTo(map);
 
-  var before = null;
-  function animate(now) {
-    var c = map.getPosition();
-    var elapsed = before? now - before: 0;
-    before = now;
-    map.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
-    requestAnimationFrame(animate);
+
+}
+
+function initScroll() {
+  const scroll = new LocomotiveScroll({
+    el: document.getElementById('js-scroll'),
+    smooth: true,
+    repeat: true,
+  });
+
+  scroll.stop();
+
+  setTimeout(()=> scroll.start(), 1000);
+
+  const markerJapan = WE.marker([35,139], './img/sushi.png', 186 ,174);
+  const markerJapan2 = WE.marker([25,119], './img/sushi.png', 186 ,174);
+
+  const firstScene =  document.querySelector('.first-scene');
+
+
+  function firstAnimationIn() {
+    map.panInsideBounds([[-30, -120], [40, 60]],
+        {heading: 4, tilt: 0, duration: 1});
+    firstScene.classList.add('active');
+    $earth.classList.add('initial');
+    $earth.classList.add('black');
+  }
+  firstAnimationIn();
+  function firstAnimationOut() {
+
   }
 
-  // myReq  = requestAnimationFrame(animate)
-
-}
-
-import LocomotiveScroll from 'locomotive-scroll';
-
-const scroll = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true,
-  repeat: true,
-});
-var marker = WE.marker([53,9], './img/test.png', 32 ,32);
-
-function first() {
-  // map.panInsideBounds([[10, -20], [10, -20]],
-  //     {heading: 2, tilt: 0, duration: 1,});
-  // map.setView([10, -20],2);
-  map.panTo([64.710824, -22.148438], {duration: 100, zoom: 10});
-}
-
-function flyToJapan() {
-  map.panInsideBounds([[-40, -70], [60, 30]],
-      {heading: 2, tilt: 25, duration: 1,});
-  // cancelAnimationFrame(myReq);
-  block.classList.add('test');
-}
-function flyToJapan2() {
-  // map.fitBounds([[22, 122], [48, 154]]);
-  map.panInsideBounds([[0, -31], [70, 59]],
-      {heading: 0, tilt: 25, duration: 1,});
-
-  marker.addTo(map);
-  block.classList.add('test2');
-}
-function flyToJapan3() {
-  map.panInsideBounds([[-85, -180], [85, 180]],
-      {heading: 0, tilt: 25, duration: 1,});
-  marker.removeFrom(map);
-}
-function flyToJapan4() {
-  map.panInsideBounds([[-1000, -1000], [1000, 1000]],
-      {heading: 0, tilt: 0, duration: 1,});
-}
-
-var showInfo = function(e) {
- e.preventDefault();
-}
-
-function scrollOnCalling(func, d, e) {
-  if (!e) {
-    return;
+  function secondAnimationIn() {
+    map.panInsideBounds([[-40, 90], [60, 190]],
+        {heading: 2, tilt: 25, duration: 2});
+    $earth.classList.add('yellow');
+    $earth.classList.remove('initial');
+    $earth.classList.remove('black');
+    firstScene.classList.remove('active');
+    markerJapan.addTo(map);
+    markerJapan2.addTo(map);
+    setTimeout(()=> {
+      document.querySelectorAll('.we-pm-icon').forEach((marker) => marker.classList.add('active'));
+    }, 1500);
   }
-  if (func === 'test0') {
-    // scroll.stop();
-    first();
+  function secondAnimationOut() {
+    $earth.classList.remove('yellow');
   }
-  if (func === 'test') {
-    // scroll.stop();
-    flyToJapan();
-  }
-  if (func === 'test2') {
-    // scroll.stop();
-    flyToJapan2();
-  }
-  if (func === 'test3') {
-    // scroll.stop();
-    flyToJapan3();
-  }
-  if (func === 'test4') {
-    // scroll.stop();
-    flyToJapan4();
 
+  function thirdAnimationIn() {
+    map.panInsideBounds([[-85, -180], [85, 180]],
+        {heading: 0, tilt: 25, duration: 1,});
+    $earth.classList.add('blue');
+    markerTokio.removeFrom(map);
   }
+  function thirdAnimationOut() {
+    $earth.classList.remove('blue');
+  }
+
+
+  function fourthAnimationIn() {
+    map.panInsideBounds([[-80, -170], [80, 190]],
+        {heading: 0, tilt: 25, duration: 1,});
+    $earth.classList.add('plum');
+  }
+  function fourthAnimationOut() {
+    $earth.classList.remove('plum');
+  }
+
+  function fifthAnimationIn() {
+    map.panInsideBounds([[-80, -170], [80, 190]],
+        {heading: 0, tilt: 0, duration: 1,});
+    $earth.classList.add('black');
+    scroll.stop();
+    setTimeout(()=> {
+      $earth.classList.add('small');
+      scroll.start();
+    }, 1000)
+  }
+  function fifthAnimationOut() {
+    scroll.stop();
+    $earth.classList.remove('small');
+    setTimeout(()=> {
+      $earth.classList.remove('black');
+      scroll.start();
+    }, 1200)
+  }
+  let direction;
+  function scrollOnCalling(func, d, e) {
+    if (func === 'first' && d === 'exit') {
+      firstAnimationOut()
+    }
+    if (func === 'second' && d === 'enter') {
+      secondAnimationIn();
+    }
+    if (func === 'second' && d === 'exit') {
+      secondAnimationOut();
+    }
+    if (func === 'second' && d === 'exit' && scrollingUp) {
+      secondAnimationOut();
+      firstAnimationIn();
+      console.log('2out top');
+    }
+    if (func === 'third' && d === 'enter') {
+      thirdAnimationIn();
+    }
+    if (func === 'third' && d === 'exit') {
+      thirdAnimationOut();
+    }
+    if (func === 'fourth' && d === 'enter') {
+      fourthAnimationIn();
+    }
+    if (func === 'fourth' && d === 'exit') {
+      fourthAnimationOut();
+    }
+    if (func === 'fifth' && d === 'enter') {
+      fifthAnimationIn();
+    }
+    if (func === 'fifth' && d === 'exit') {
+      fifthAnimationOut();
+    }
+  }
+
+  scroll.on("call", scrollOnCalling);
 }
 
-scroll.on("call", scrollOnCalling);
 
-window.onload = () => initialize();
-// MakeSmth();
-// MakeSmth2();
+window.onload = () => {
+  initMap();
+  initScroll();
+};
+
 

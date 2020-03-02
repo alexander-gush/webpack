@@ -1,0 +1,31 @@
+.first-scene {
+  &__content {
+    height: 101vh;
+    position: relative;
+  }
+  h1 {
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+  }
+  .arrow {
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    opacity: 0;
+  }
+  &.active {
+    h1 {
+      opacity: 1;
+    }
+    .arrow {
+      transition: opacity 1s;
+      transition-delay: 1s;
+      opacity: 1;
+    }
+  }
+}
